@@ -1,0 +1,51 @@
+export const classes = [
+  {
+    code: "BIT 311",
+    title: "Information Technology 1",
+    credit: 2,
+    lecturer: "Mr. Anthony Emil",
+    day: 4,
+  },
+  {
+    code: "BIT 313",
+    title: "Principles of Programming",
+    credit: 3,
+    lecturer: "Mr. Anthony Emil",
+    day: 4,
+  },
+  {
+    code: "BMT 311",
+    title: "Probability and Statistics",
+    credit: 2,
+    lecturer: "Ms. Saralyn Mensah",
+    day: 1,
+  },
+  {
+    code: "BCS 311",
+    title: "Communication Skills 1",
+    credit: 2,
+    lecturer: "Mr. Kofi Konadu Noye",
+    day: 3,
+  },
+  {
+    code: "BAS 311",
+    title: "African Studies",
+    credit: 2,
+    lecturer: "Mr. Peter Yankson",
+    day: 5,
+  },
+  {
+    code: "BIT 411",
+    title: "Basic Electronics",
+    credit: 3,
+    lecturer: "Dr. Wisdom Opare",
+    day: 2,
+  },
+  {
+    code: "BIT 413",
+    title: "Computer Application",
+    credit: 3,
+    lecturer: "Mr. Anthony Emil",
+    day: 4,
+  },
+];
