@@ -9,6 +9,7 @@ export default class News extends Component {
       <Container>
         <NewsHeader>
           <img
+            loading="lazy"
             src="https://images.unsplash.com/photo-1624409330593-7893ff293e7c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80"
             alt="banner_image"
             srcset=""
@@ -130,8 +131,15 @@ export default class News extends Component {
           </p>
         </NewsBody>
 
-        <section style={{ marginTop: 50 }}>
-          <p>love</p>
+        <section
+          style={{
+            marginTop: 50,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: 20,
+          }}
+        >
+          <p style={{ textAlign: "center" }}>love</p>
         </section>
       </Container>
     );

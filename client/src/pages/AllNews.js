@@ -61,7 +61,7 @@ export default class AllNews extends Component {
             justifyContent: "space-evenly",
           }}
         >
-          {news.map((news) => (
+          {news?.map((news) => (
             <Link key={news._id} to={`/news/${news._id}`}>
               <NewsCard>
                 <ClassMateImg

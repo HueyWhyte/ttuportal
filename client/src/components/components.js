@@ -275,7 +275,7 @@ export const NewsHeader = styled.section`
 `;
 
 export const NewsBody = styled.section`
-  width: 85;
+  width: 85%;
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
