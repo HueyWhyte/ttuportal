@@ -260,3 +260,31 @@ export const PaymentContainer = styled.section`
   overflow-y: hidden;
   white-space: nowrap;
 `;
+
+export const NewsHeader = styled.section`
+  background-color: white;
+  width: 85%;
+  border-radius: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+
+  @media ${device.tablet} {
+    width: 92vw;
+  }
+`;
+
+export const NewsBody = styled.section`
+  width: 85;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+
+  > p {
+    margin-top: 20px;
+  }
+
+  @media ${device.tablet} {
+    width: 92vw;
+  }
+`;

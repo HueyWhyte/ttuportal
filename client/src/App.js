@@ -39,11 +39,11 @@ class App extends Component {
           {/* <SideNav /> */}
 
           <Switch>
-            <PrivateRoute path="/news/:id" component={News} />
+            <Route path="/news/:id" component={News} />
+
+            <Route path="/news" component={AllNews} />
 
             <PrivateRoute path="/classmates" component={ClassMates} />
-
-            <PrivateRoute path="/news" component={AllNews} />
 
             <PrivateRoute path="/profile" component={Profile} />
 
