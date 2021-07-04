@@ -9,13 +9,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/news", require("./routes/news"));
-app.use("/api/course", require("./routes/course"));
-app.use("/api/program", require("./routes/program"));
-app.use("/api/students", require("./routes/student"));
-app.use("/api/results", require("./routes/result"));
-app.use("/api/payment", require("./routes/payment"));
-app.use("/api/lecturer", require("./routes/lecturer"));
+app.use("/news", require("./routes/news"));
+app.use("/course", require("./routes/course"));
+app.use("/program", require("./routes/program"));
+app.use("/students", require("./routes/student"));
+app.use("/results", require("./routes/result"));
+app.use("/payment", require("./routes/payment"));
+app.use("/lecturer", require("./routes/lecturer"));
 
 //  process.env.MONGODB_URL,
 // "mongodb://127.0.0.1:27017/portal" ||
