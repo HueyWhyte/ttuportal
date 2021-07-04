@@ -8,15 +8,19 @@ const newsSchema = new Schema({
   },
   reporter: {
     type: Schema.Types.ObjectId,
-    ref: "Reporter",
+    ref: "Student",
     required: true,
   },
   body: {
     type: String,
     required: true,
-    min: 10,
+    min: 200,
   },
-  images: [{ url: String }],
+  image: {
+    type: String,
+    required: true,
+    min: 8,
+  },
   timestamp: {
     type: Date,
     default: Date.now,

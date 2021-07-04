@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import AllNews from "./pages/AllNews";
 import SemResult from "./pages/SemResult";
 import ClassMates from "./pages/ClassMates";
+import Assessment from "./pages/Assessment";
 
 import SideNav from "./components/SideNav";
 import { loadStudent } from "./redux/actions/auth";
@@ -42,6 +43,8 @@ class App extends Component {
             <Route path="/news/:id" component={News} />
 
             <Route path="/news" component={AllNews} />
+
+            <PrivateRoute path="/assessment" component={Assessment} />
 
             <PrivateRoute path="/classmates" component={ClassMates} />
 

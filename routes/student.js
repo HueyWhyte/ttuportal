@@ -96,6 +96,8 @@ router.get("/all_by_class", auth, async (req, res) => {
   );
 
   Student.find({ program: student.program })
+    .where("_id")
+    .ne(req.student.id)
     .select("-__v -_id -password -results")
     .populate("program")
     .sort("indexNumber")

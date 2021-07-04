@@ -262,6 +262,8 @@ export const PaymentContainer = styled.section`
 `;
 
 export const NewsHeader = styled.section`
+  display: flex;
+  flex-direction: column;
   background-color: white;
   width: 85%;
   border-radius: 20px;
@@ -279,6 +281,8 @@ export const NewsBody = styled.section`
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
+  margin-bottom: 75px;
+  white-space: pre-wrap;
 
   > p {
     margin-top: 20px;
@@ -286,5 +290,13 @@ export const NewsBody = styled.section`
 
   @media ${device.tablet} {
     width: 92vw;
+  }
+`;
+
+export const Newsmeta = styled.div`
+  margin: 12px;
+
+  > p {
+    margin-top: 6px;
   }
 `;
