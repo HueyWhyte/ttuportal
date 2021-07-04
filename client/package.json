@@ -25,7 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://ttuportal.herokuapp.com",
+  "proxy": "https://ttuportal.herokuapp.com/api",
   "secure": false,
   "eslintConfig": {
     "extends": [
