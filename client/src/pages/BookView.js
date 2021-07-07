@@ -12,14 +12,14 @@ export default class BookView extends Component {
   }
 
   render() {
-    const { pageNumber, numPages } = this.state;
+    // const { pageNumber, numPages } = this.state;
     return (
       <div>
         <h1>BookView</h1>
 
         <Document
           file="https://www.penguin.com/static/pdf/teachersguides/animalfarm.pdf"
-          onLoadSuccess={this.onDocumentLoadSuccess.bind(this)}
+          // onLoadSuccess={this.onDocumentLoadSuccess.bind()}
         >
           <Page />
         </Document>
