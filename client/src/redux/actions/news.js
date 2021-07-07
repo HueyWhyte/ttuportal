@@ -53,9 +53,9 @@ export const newNews = (body) => (dispatch, getState) => {
     });
 };
 
-export const deleteNews = (body, id) => (dispatch, getState) => {
+export const deleteNews = (id) => (dispatch, getState) => {
   axios
-    .delete(`/newz/${id}/delete`, body, tokenConfig(getState))
+    .delete(`/newz/${id}/delete`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: "GET_NEWS",

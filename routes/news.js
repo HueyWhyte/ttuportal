@@ -22,7 +22,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/new", auth, (req, res) => {
-  let { title, reporter, body, image } = req.body;
+  let { title, body, image } = req.body;
 
   let newNews = new News({
     title,

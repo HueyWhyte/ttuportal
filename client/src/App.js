@@ -8,6 +8,7 @@ import News from "./pages/News";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import AllNews from "./pages/AllNews";
+import AddNews from "./pages/AddNews";
 import SemResult from "./pages/SemResult";
 import ClassMates from "./pages/ClassMates";
 import Assessment from "./pages/Assessment";
@@ -43,6 +44,8 @@ class App extends Component {
             <Route path="/news/:id" component={News} />
 
             <Route path="/news" component={AllNews} />
+
+            <Route path="/addnews" component={AddNews} />
 
             <PrivateRoute path="/assessment" component={Assessment} />
 
