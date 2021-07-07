@@ -27,7 +27,7 @@ class AddNews extends Component {
     };
 
     console.log(data);
-    // this.props.newNews(data);
+    this.props.newNews(data);
   };
 
   render() {

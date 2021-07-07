@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import AllNews from "./pages/AllNews";
 import AddNews from "./pages/AddNews";
+import Library from "./pages/Library";
+import BookView from "./pages/BookView";
 import SemResult from "./pages/SemResult";
 import ClassMates from "./pages/ClassMates";
 import Assessment from "./pages/Assessment";
@@ -46,6 +48,10 @@ class App extends Component {
             <Route path="/news" component={AllNews} />
 
             <Route path="/addnews" component={AddNews} />
+
+            <Route path="/library/book/:id" component={BookView} />
+
+            <Route path="/library" component={Library} />
 
             <PrivateRoute path="/assessment" component={Assessment} />
 

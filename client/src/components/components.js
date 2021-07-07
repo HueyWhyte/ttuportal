@@ -340,3 +340,14 @@ export const NewsForm = styled.section`
     background-color: #1b337f;
   }
 `;
+
+// book styles
+export const BookCard = styled.div`
+  background-color: white;
+  border-radius: 12px;
+  padding: 8px;
+  margin: 5px;
+  display: flex;
+  width: 300px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+`;

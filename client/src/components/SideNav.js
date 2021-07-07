@@ -144,6 +144,26 @@ class SideNav extends Component {
           News
         </NavLink>
 
+        <NavLink
+          onClick={this.toggleSiveNav}
+          exact={true}
+          to="/addnews"
+          className="nav_btn"
+          activeClassName="nav_btn_active"
+        >
+          Add News
+        </NavLink>
+
+        <NavLink
+          onClick={this.toggleSiveNav}
+          exact={true}
+          to="/library"
+          className="nav_btn"
+          activeClassName="nav_btn_active"
+        >
+          Library
+        </NavLink>
+
         {this.props.auth.isAuthenticated ? null : (
           <Link
             onClick={this.toggleSiveNav}
