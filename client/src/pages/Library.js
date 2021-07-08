@@ -41,7 +41,7 @@ export default class Library extends Component {
   render() {
     return (
       <Container>
-        <h1>Library</h1>
+        <h1 style={{ textAlign: "center" }}>Library</h1>
 
         <section
           style={{
@@ -59,15 +59,34 @@ export default class Library extends Component {
             >
               <BookCard>
                 <img
-                  src={require("../assets/img/banner.png")}
+                  src="https://images.unsplash.com/photo-1516153553821-218745a8c4f4?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM1fEo5eXJQYUhYUlFZfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                   alt=""
-                  style={{ width: 100, height: 100 }}
+                  style={{
+                    width: 100,
+                    height: 100,
+                    borderRadius: 12,
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
                 />
-                <div style={{ display: "flex", flexDirection: "column" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    flex: 1,
+                    marginLeft: 4,
+                  }}
+                >
                   <h4>{book.title}</h4>
                   <p style={{ marginTop: 6 }}>{book.description}</p>
 
-                  <p style={{ marginTop: 6, fontSize: 13, marginLeft: "auto" }}>
+                  <p
+                    style={{
+                      marginTop: "auto",
+                      fontSize: 13,
+                      marginLeft: "auto",
+                    }}
+                  >
                     <i>{book.author}</i>
                   </p>
                 </div>

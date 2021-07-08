@@ -1,29 +1,37 @@
-import React, { Component } from "react";
-import { Document, Page } from "react-pdf";
+import React, { useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-export default class BookView extends Component {
-  state = {
-    numPages: null,
-    pageNumber: 1,
-  };
+const options = {
+  cMapUrl: "cmaps/",
+  cMapPacked: true,
+};
 
-  onDocumentLoadSuccess({ numPages }) {
-    this.setState({ numPages });
+function BookView() {
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  function onDocumentLoadSuccess({ numPages: nextNumPages }) {
+    setNumPages(nextNumPages);
   }
 
-  render() {
-    // const { pageNumber, numPages } = this.state;
-    return (
-      <div>
-        <h1>BookView</h1>
-
-        <Document
-          file="https://www.penguin.com/static/pdf/teachersguides/animalfarm.pdf"
-          // onLoadSuccess={this.onDocumentLoadSuccess.bind()}
-        >
-          <Page />
-        </Document>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Document
+        file="./book.pdf"
+        onLoadSuccess={onDocumentLoadSuccess}
+        options={options}
+      >
+        {Array.from(new Array(numPages), (el, index) => (
+          <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+        ))}
+      </Document>
+      <p>
+        Page {pageNumber} of {numPages}
+      </p>
+    </div>
+  );
 }
+
+export default BookView;
