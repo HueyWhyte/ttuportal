@@ -38,7 +38,7 @@ const authReducer = (state = initialState, action) => {
     case "UPDATE":
       return {
         ...state,
-        student: action.payload,
+        // student: action.payload,
       };
     case "LOGOUT":
       localStorage.removeItem("token");

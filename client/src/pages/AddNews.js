@@ -26,8 +26,8 @@ class AddNews extends Component {
       image,
     };
 
-    console.log(data);
     this.props.newNews(data);
+    this.setState({ title: "", body: "", image: "" });
   };
 
   render() {

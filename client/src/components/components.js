@@ -259,6 +259,7 @@ export const FieldsContainer = styled.section`
   }
 `;
 export const PaymentContainer = styled.section`
+  width: 100%;
   margin-top: 30px;
   padding: 8px;
   border-radius: 12px;

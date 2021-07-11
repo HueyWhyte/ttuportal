@@ -8,7 +8,6 @@ import {
   TextFieldCon,
   Button,
 } from "../components/components";
-import ErrorBox from "../components/ErrorBox";
 import { login } from "../redux/actions/auth";
 
 class Login extends Component {
@@ -16,6 +15,8 @@ class Login extends Component {
     indexNumber: "",
     password: "",
     message: "",
+    inumErr: false,
+    pswdErr: false,
   };
 
   handleTextChange = (e) => {
@@ -26,16 +27,24 @@ class Login extends Component {
 
   loginUser = () => {
     let { indexNumber, password } = this.state;
-    let body = {
-      indexNumber,
-      password,
-    };
-    this.props.login(body);
+
+    if (indexNumber === "" || indexNumber.length < 5) {
+      this.setState({ inumErr: true });
+    } else {
+      if (password === " " || password.length < 5) {
+        this.setState({ pswdErr: true });
+      } else {
+        let body = {
+          indexNumber,
+          password,
+        };
+        this.props.login(body);
+      }
+    }
   };
 
   render() {
     let { isAuthenticated } = this.props.auth;
-    let { message, code } = this.props.message;
 
     if (isAuthenticated) {
       return <Redirect to="/" />;
@@ -54,11 +63,10 @@ class Login extends Component {
           index number. Eg. PD/MCS/19/022 becomes PDMCS19022
         </ExamP>
 
-        {message !== "" ? <ErrorBox code={code} message={message} /> : null}
-
         <TextFieldCon>
           <label htmlFor="email">Email</label>
           <input
+            style={{ borderColor: this.state.inumErr ? "red" : "none" }}
             onChange={this.handleTextChange}
             value={this.state.indexNumber}
             type="text"
@@ -71,6 +79,7 @@ class Login extends Component {
         <TextFieldCon>
           <label htmlFor="password">Password</label>
           <input
+            style={{ borderColor: this.state.pswdErr ? "red" : "none" }}
             onChange={this.handleTextChange}
             value={this.state.password}
             type="password"
@@ -106,7 +115,6 @@ class Login extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    message: state.message,
   };
 };
 

@@ -3,16 +3,13 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { loadStudent } from "../redux/actions/auth";
-import { accessLecturer } from "../redux/actions/assessment";
+import { accessLecturer, getMyAssessments } from "../redux/actions/assessment";
 import { Container, Button } from ".././components/components";
-import ErrorBox from "../components/ErrorBox";
 
 const AssessmentTable = styled.table`
   width: 98%;
   margin-left: auto;
   margin-right: auto;
-  /* display: flex;
-  flex-direction: column; */
 
   > table,
   th,
@@ -42,7 +39,12 @@ class Assessment extends Component {
     four: 1,
     five: 1,
     six: 1,
+    crsErr: false,
   };
+
+  componentDidMount() {
+    this.props.getMyAssessments();
+  }
 
   handleRangeValue = (e) => {
     e.preventDefault();
@@ -54,24 +56,27 @@ class Assessment extends Component {
   onAssess = () => {
     let { course, one, two, three, four, five, six } = this.state;
     let data = { course, one, two, three, four, five, six };
-    console.log(data);
-    this.props.accessLecturer(data);
+    if (course === "") {
+      this.setState({ crsErr: true });
+    } else {
+      this.props.accessLecturer(data);
 
-    this.setState({
-      course: "",
-      one: 1,
-      two: 1,
-      three: 1,
-      four: 1,
-      five: 1,
-      six: 1,
-    });
+      this.setState({
+        course: "",
+        one: 1,
+        two: 1,
+        three: 1,
+        four: 1,
+        five: 1,
+        six: 1,
+      });
+    }
   };
 
   render() {
     let { student } = this.props.auth;
     let { course, one, two, three, four, five, six } = this.state;
-    let { message, code } = this.props.message;
+    let { assessments } = this.props.assessment;
 
     return (
       <Container>
@@ -85,19 +90,21 @@ class Assessment extends Component {
           name="course"
           id="course"
           style={{
-            width: "80%",
             padding: 5,
+            width: "80%",
+            marginBottom: 20,
             marginLeft: "auto",
             marginRight: "auto",
-            marginBottom: 20,
+            borderColor: this.state.crsErr ? "red" : "none",
           }}
           value={course}
           onChange={(e) => this.handleRangeValue(e)}
         >
-          {student.program?.courses.map((course) => (
+          <option value=""></option>
+          {student?.program?.courses.map((course) => (
             <option key={course._id} value={course._id}>
-              {course.code} - {course.title} - {course.lecturer.lastname}{" "}
-              {course.lecturer.firstname}
+              {course.code} - {course.title} - {course?.lecturer.lastname}{" "}
+              {course?.lecturer.firstname}
             </option>
           ))}
         </select>
@@ -139,7 +146,7 @@ class Assessment extends Component {
                 <ol>
                   <li>
                     Lecturer(s) was punctual, regular and stayed through the
-                    entire session
+                    entire session.
                   </li>
                   <li>
                     The Lecturer(s) started lecturers in the week that it was
@@ -168,15 +175,15 @@ class Assessment extends Component {
                 <ol>
                   <li>
                     Demonstrated knowledge, skill and competency on the subject
-                    matter and communicated effectively and efficiently
+                    matter and communicated effectively and efficiently.
                   </li>
                   <li>
                     Was responsive to students’ concerns (expressions, opinions
-                    and questions)
+                    and questions).
                   </li>
                   <li>
                     Used class time to fully promote learning and encourage
-                    problem solving
+                    problem solving.
                   </li>
                   <li>
                     Created good / friendly atmosphere and proper effective
@@ -210,7 +217,7 @@ class Assessment extends Component {
                   <li>
                     Expectations of students’ responsibilities are stated (e.g.,
                     Attending classes regularly, on time and participating in
-                    class activities etc.)
+                    class activities etc).
                   </li>
                   <li>The course grading scale is disclosed to students.</li>
                   <li>
@@ -243,15 +250,15 @@ class Assessment extends Component {
                 <b>Assessment and Grading</b>
 
                 <ol>
-                  <li>Gave adequate assignments/quizzes (minimum of 2)</li>
-                  <li>Gave adequate practical assignment</li>
+                  <li>Gave adequate assignments/quizzes (minimum of 2).</li>
+                  <li>Gave adequate practical assignment.</li>
                   <li>
                     Demonstrated/exhibited competencies of the practice section
                     to students.
                   </li>
                   <li>
                     Marked assignments, quizzes, mid semester examination and
-                    practicals were returned to students on time
+                    practicals were returned to students on time.
                   </li>
                   <li>
                     Assignments, quizzes, mid semester examination and
@@ -280,7 +287,7 @@ class Assessment extends Component {
                 <ol>
                   <li>
                     The Lecturer(s) provided students with adequate and current
-                    reading materials/books
+                    reading materials/books.
                   </li>
                   <li>
                     The Lecturer(s) made available soft copies (online) of
@@ -308,7 +315,20 @@ class Assessment extends Component {
           Submit
         </Button>
 
-        {message !== "" ? <ErrorBox code={code} message={message} /> : null}
+        <section style={{ marginTop: 40 }}>
+          {assessments.map((assessment) => (
+            <div style={{ margin: 3, padding: 4 }}>
+              <p>
+                {assessment?.course.code} - {assessment?.course.title} -{" "}
+                {assessment?.course?.lecturer.lastname}{" "}
+                {assessment?.course?.lecturer.firstname}
+              </p>
+              {/* <p>{assessment?.one}</p>
+              <p>{assessment?.two}</p>
+              <p>{assessment?.three}</p> */}
+            </div>
+          ))}
+        </section>
       </Container>
     );
   }
@@ -317,10 +337,12 @@ class Assessment extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
-    message: state.message,
+    assessment: state.assessment,
   };
 };
 
-export default connect(mapStateToProps, { loadStudent, accessLecturer })(
-  Assessment
-);
+export default connect(mapStateToProps, {
+  loadStudent,
+  accessLecturer,
+  getMyAssessments,
+})(Assessment);

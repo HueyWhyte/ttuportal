@@ -6,6 +6,11 @@ const AssessmentSchema = new Schema({
     ref: "Course",
     required: true,
   },
+  student: {
+    type: Schema.Types.ObjectId,
+    ref: "Student",
+    required: true,
+  },
   one: String,
   two: String,
   three: String,

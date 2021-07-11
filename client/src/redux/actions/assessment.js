@@ -26,3 +26,20 @@ export const accessLecturer = (body) => (dispatch, getState) => {
       });
     });
 };
+
+export const getMyAssessments = () => (dispatch, getState) => {
+  axios
+    .get("/assessmentz/me", tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: "LOAD_ASSESSMENTS",
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: "ERROR",
+        payload: err.response,
+      });
+    });
+};

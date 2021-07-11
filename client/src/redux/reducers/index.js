@@ -4,13 +4,15 @@ import news from "./news";
 import message from "./message";
 import result from "./result";
 import payment from "./payment";
+import assessment from "./assessment";
 
 const rootReducer = combineReducers({
+  news,
   auth,
+  result,
   payment,
   message,
-  result,
-  news,
+  assessment,
 });
 
 export default rootReducer;

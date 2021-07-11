@@ -44,6 +44,14 @@ export const newNews = (body) => (dispatch, getState) => {
         type: "GET_NEWS",
         payload: res.data,
       });
+
+      dispatch({
+        type: "SUCCESS",
+        payload: {
+          status: 200,
+          data: { message: "News posted successfully" },
+        },
+      });
     })
     .catch((err) => {
       dispatch({

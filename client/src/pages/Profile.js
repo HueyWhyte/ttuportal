@@ -12,7 +12,6 @@ import {
 } from "../components/components";
 import { updateStudent } from "../redux/actions/auth";
 import { getPayments } from "../redux/actions/payment";
-import ErrorBox from "../components/ErrorBox";
 
 class Profile extends Component {
   state = {
@@ -37,7 +36,6 @@ class Profile extends Component {
   handleTextInput = (e) => {
     e.preventDefault();
     let { name, value } = e.target;
-
     this.setState({ [name]: value });
   };
 
@@ -85,12 +83,9 @@ class Profile extends Component {
       image,
     } = this.state;
     let payments = this.props.payments;
-    let { message, code } = this.props.message;
 
     return (
-      <Container>
-        {message !== "" ? <ErrorBox code={code} message={message} /> : null}
-
+      <Container style={{ alignItems: "center" }}>
         <ProfileImage style={{ margin: "10px auto" }} src={image} alt="" />
 
         <FieldsContainer>
@@ -277,7 +272,6 @@ const mapStateToProps = (state) => {
   return {
     student: state.auth.student,
     payments: state.payment.payments,
-    message: state.message,
   };
 };
 

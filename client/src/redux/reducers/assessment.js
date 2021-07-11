@@ -1,23 +1,28 @@
 const initState = {
-  payments: [],
-  payment: {},
+  assessments: [],
+  assessment: {},
 };
 
-const paymentReducer = (state = initState, action) => {
+const assessmentReducer = (state = initState, action) => {
   switch (action.type) {
     case "NEW_ASSESSMENT":
       return {
         ...state,
-        payments: action.payload,
+        assessment: action.payload,
+      };
+    case "LOAD_ASSESSMENTS":
+      return {
+        ...state,
+        assessments: action.payload,
       };
     case "UPDATE_ASSESSMENT":
       return {
         ...state,
-        payment: action.payload,
+        assessment: action.payload,
       };
     default:
       return state;
   }
 };
 
-export default paymentReducer;
+export default assessmentReducer;

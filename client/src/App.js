@@ -16,6 +16,7 @@ import ClassMates from "./pages/ClassMates";
 import Assessment from "./pages/Assessment";
 
 import SideNav from "./components/SideNav";
+import ErrorBox from "./components/ErrorBox";
 import { loadStudent } from "./redux/actions/auth";
 import PrivateRoute from "./components/PrivateRoute";
 import NavigationBar from "./components/NavigationBar";
@@ -33,6 +34,8 @@ class App extends Component {
 
   render() {
     let { isAuthenticated } = this.props.auth;
+    let { message, code } = this.props.message;
+
     return (
       <Router>
         {isAuthenticated ? <NavigationBar /> : null}
@@ -64,6 +67,10 @@ class App extends Component {
             <PrivateRoute path="/" component={Home} />
           </Switch>
         </Container>
+
+        {message !== "" ? (
+          <ErrorBox show={true} code={code} message={message} />
+        ) : null}
       </Router>
     );
   }
@@ -72,6 +79,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    message: state.message,
   };
 };
 export default connect(mapStateToProps, { loadStudent })(App);
