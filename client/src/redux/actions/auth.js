@@ -1,23 +1,7 @@
 import axios from "axios";
 
 import tokenConfig from "./tokenConfig";
-
-export const getClassMates = () => (dispatch, getState) => {
-  axios
-    .get(`/students/all_by_class`, tokenConfig(getState))
-    .then((res) => {
-      dispatch({
-        type: "LOAD_MATES",
-        payload: res.data,
-      });
-    })
-    .catch((err) => {
-      dispatch({
-        type: "LOAD_ERROR",
-        payload: err,
-      });
-    });
-};
+// import { errorMessage, successMessaage } from "./message";
 
 export const loadStudent = () => (dispatch, getState) => {
   dispatch({
@@ -34,7 +18,7 @@ export const loadStudent = () => (dispatch, getState) => {
     })
     .catch((err) => {
       dispatch({
-        type: "LOAD_ERROR",
+        type: "AUTH_ERROR",
         payload: err,
       });
     });
@@ -50,11 +34,10 @@ export const login = (body) => (dispatch) => {
       });
     })
     .catch((err) => {
-      console.log(err);
-
+      // errorMessage(err.response);
       dispatch({
-        type: "LOAD_ERROR",
-        payload: err,
+        type: "ERROR",
+        payload: err.response,
       });
     });
 };
@@ -67,12 +50,19 @@ export const updateStudent = (body) => (dispatch, getState) => {
         type: "UPDATE",
         payload: res.data,
       });
+      dispatch({
+        type: "SUCCESS",
+        payload: {
+          status: 200,
+          data: { message: "Profile Updated Successfully" },
+        },
+      });
     })
     .catch((err) => {
       console.log(err);
       dispatch({
-        type: "LOAD_ERROR",
-        payload: err,
+        type: "ERROR",
+        payload: err.response,
       });
     });
 };
@@ -81,4 +71,21 @@ export const logout = () => (dispatch) => {
   dispatch({
     type: "LOGOUT",
   });
+};
+
+export const getClassMates = () => (dispatch, getState) => {
+  axios
+    .get(`/students/all_by_class`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: "LOAD_MATES",
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: "LOAD_ERROR",
+        payload: err.response,
+      });
+    });
 };

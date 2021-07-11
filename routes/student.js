@@ -25,7 +25,7 @@ router.get("/me", auth, (req, res) => {
       },
     })
     .then((student) => res.send(student))
-    .catch((err) => res.status(401).send({ msg: err }));
+    .catch((err) => res.status(401).send({ message: "Authorization Denied!" }));
 });
 
 // login
@@ -45,11 +45,12 @@ router.post("/login", async (req, res) => {
 
   if (!student)
     return res
-      .status(400)
-      .send({ msg: "Student with index number does not exist!" });
+      .status(401)
+      .send({ message: "Student with index number does not exist!" });
 
   const validPass = await bcrypt.compare(password, student.password);
-  if (!validPass) return res.status(400).send("Password is wrong!");
+  if (!validPass)
+    return res.status(401).send({ message: "Password is wrong!" });
 
   let token = genToken(student);
   res.send({ student, token });
@@ -107,7 +108,7 @@ router.get("/all_by_class", auth, async (req, res) => {
 
 // add new student
 router.post("/new", async (req, res) => {
-  let { firstname, lastname, password, indexNumber, program } = req.body;
+  let { firstname, lastname, password, indexNumber, program, image } = req.body;
 
   let isStudent = await Student.findOne({ indexNumber });
   if (isStudent)
@@ -121,6 +122,7 @@ router.post("/new", async (req, res) => {
     indexNumber,
     password,
     program,
+    image,
   });
 
   newStudent
@@ -130,30 +132,30 @@ router.post("/new", async (req, res) => {
 });
 
 // add result to student profile
-router.put("/addresult", async (req, res) => {
-  let { id, courseTitle, code, creditHours, score, year, semester } = req.body;
+// router.put("/addresult", async (req, res) => {
+//   let { id, courseTitle, code, creditHours, score, year, semester } = req.body;
 
-  const student = await Student.findById(id);
+//   const student = await Student.findById(id);
 
-  if (student) {
-    try {
-      student.results.unshift({
-        courseTitle,
-        code,
-        creditHours,
-        score,
-        year,
-        semester,
-      });
+//   if (student) {
+//     try {
+//       student.results.unshift({
+//         courseTitle,
+//         code,
+//         creditHours,
+//         score,
+//         year,
+//         semester,
+//       });
 
-      await student.save();
-      res.send(student);
-    } catch (err) {
-      res.status(400).send({ Error: err });
-    }
-  } else {
-    res.status(401).send("Student does not exist!");
-  }
-});
+//       await student.save();
+//       res.send(student);
+//     } catch (err) {
+//       res.status(400).send({ Error: err });
+//     }
+//   } else {
+//     res.status(401).send("Student does not exist!");
+//   }
+// });
 
 module.exports = router;

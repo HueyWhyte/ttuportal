@@ -65,8 +65,8 @@ class SideNav extends Component {
           }}
         >
           <img
-            src="https://cdn.pixabay.com/photo/2016/03/09/15/10/man-1246508_960_720.jpg"
-            alt="profile img"
+            src={student?.image}
+            alt=""
             style={{
               marginRight: 12,
               height: 40,
@@ -81,9 +81,9 @@ class SideNav extends Component {
             style={{ color: "black", textDecoration: "none" }}
           >
             <p style={{ fontWeight: "bold" }}>
-              {student.firstname} {student.lastname}
+              {student?.firstname} {student?.lastname}
             </p>
-            <p>{student.indexNumber}</p>
+            <p>{student?.indexNumber}</p>
           </NavLink>
         </div>
 
@@ -107,32 +107,23 @@ class SideNav extends Component {
           Results
         </NavLink>
 
-        <Link
+        {/* <Link
           to="#"
           className="nav_btn"
           // onClick={this.toggleSiveNav}
           // activeClassName="nav_btn_active"
         >
           Attachment form
-        </Link>
+        </Link> */}
 
-        <Link
-          to="#"
+        <NavLink
+          to="/assessment"
           className="nav_btn"
-          // onClick={this.toggleSiveNav}
-          // activeClassName="nav_btn_active"
-        >
-          Assumption of duty
-        </Link>
-
-        <Link
-          to="#"
-          className="nav_btn"
-          // onClick={this.toggleSiveNav}
-          // activeClassName="nav_btn_active"
+          onClick={this.toggleSiveNav}
+          activeClassName="nav_btn_active"
         >
           Assess Lecturer
-        </Link>
+        </NavLink>
 
         <NavLink
           onClick={this.toggleSiveNav}
@@ -179,7 +170,6 @@ class SideNav extends Component {
 
         <Link
           onClick={() => this.props.logout()}
-          // onClick={this.toggleSiveNav}
           to="#"
           style={{
             marginTop: "auto",
@@ -200,7 +190,6 @@ class SideNav extends Component {
           <IoIosLogOut
             onClick={this.toggleSiveNav}
             size={28}
-            // color="red"
             style={{ marginRight: 10 }}
           />
           Logout

@@ -33,7 +33,7 @@ class News extends Component {
             }}
           />
 
-          <div style={{ margin: "12px 12px 12px auto" }}>
+          <div style={{ margin: "12px 12px 5px auto" }}>
             <IoIosShare color="grey" size={20} style={{ marginRight: 8 }} />
             <IoIosEye color="grey" size={20} style={{ marginRight: 8 }} />
             <IoIosChatbubbles

@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import { BookCard, Container } from "../components/components";
+import {
+  BookCard,
+  Container,
+  BookMeta,
+  BookImage,
+  BooksContainer,
+} from "../components/components";
 
 const books = [
   {
@@ -43,14 +49,7 @@ export default class Library extends Component {
       <Container>
         <h1 style={{ textAlign: "center" }}>Library</h1>
 
-        <section
-          style={{
-            width: "100%",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-          }}
-        >
+        <BooksContainer>
           {books.map((book) => (
             <Link
               style={{ textDecoration: "none", color: "black" }}
@@ -58,25 +57,12 @@ export default class Library extends Component {
               to={`/library/book/${book._id}`}
             >
               <BookCard>
-                <img
+                <BookImage
                   src="https://images.unsplash.com/photo-1516153553821-218745a8c4f4?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM1fEo5eXJQYUhYUlFZfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                   alt=""
-                  style={{
-                    width: 100,
-                    height: 100,
-                    borderRadius: 12,
-                    marginTop: "auto",
-                    marginBottom: "auto",
-                  }}
                 />
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    flex: 1,
-                    marginLeft: 4,
-                  }}
-                >
+
+                <BookMeta>
                   <h4>{book.title}</h4>
                   <p style={{ marginTop: 6 }}>{book.description}</p>
 
@@ -89,11 +75,11 @@ export default class Library extends Component {
                   >
                     <i>{book.author}</i>
                   </p>
-                </div>
+                </BookMeta>
               </BookCard>
             </Link>
           ))}
-        </section>
+        </BooksContainer>
       </Container>
     );
   }

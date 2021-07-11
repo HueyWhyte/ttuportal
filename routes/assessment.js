@@ -1,0 +1,38 @@
+const { Router } = require("express");
+
+const router = Router();
+const Assessment = require("../models/Assessment");
+const Course = require("../models/Course");
+
+// get all assessments
+router.get("/", (req, res) => {
+  Assessment.find()
+    .populate({
+      path: "course",
+      populate: { path: "lecturer", model: "Lecturer" },
+    })
+    .then((assessments) => res.send(assessments))
+    .catch((err) => res.status(401).send(err));
+});
+
+// make new assessment
+router.post("/new", async (req, res) => {
+  let { course } = req.body;
+
+  const newAssessment = new Assessment({
+    course,
+  });
+
+  newAssessment
+    .save()
+    .then((course) => res.send(course))
+    .catch((err) => res.send(err));
+
+  // update course assessment status to true
+  //   const dcourse = await Course.findById(course);
+  //   dcourse.assessed = true;
+  //   await dcourse.save();
+  //   res.send(dcourse);
+});
+
+module.exports = router;

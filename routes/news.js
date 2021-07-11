@@ -18,7 +18,7 @@ router.get("/:id", (req, res) => {
   News.findById(req.params.id)
     .populate("reporter")
     .then((news) => res.send(news))
-    .catch((err) => res.status(401).send({ error: err }));
+    .catch((err) => res.status(401).send({ message: "News does not exist!" }));
 });
 
 router.post("/new", auth, (req, res) => {

@@ -1,6 +1,57 @@
 import styled from "styled-components";
 import { device } from "../assets/screens";
 
+// navigation bar styles
+export const NavContainer = styled.nav`
+  background-color: white;
+  height: 45px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 0px 10px 0px #bbb6b6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 200;
+
+  > a {
+    text-decoration: none;
+
+    @media ${device.tablet} {
+      display: none;
+    }
+  }
+
+  > .nav_btn {
+  }
+
+  > .nav_btn_active {
+    background-color: #1b337f;
+    color: white;
+    padding: 8px;
+    border-radius: 8px 8px 0 0;
+  }
+`;
+export const SideNavBtn = styled.p`
+  margin-right: 5px;
+  display: none;
+
+  @media ${device.tablet} {
+    display: flex;
+  }
+`;
+export const ProfileImageSmall = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  @media ${device.tablet} {
+    display: none;
+  }
+`;
+
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
@@ -23,6 +74,7 @@ export const Button = styled.p`
   padding: 5px 12px;
   font-size: 17px;
   text-align: center;
+  font-weight: bold;
 `;
 
 // Home page styles
@@ -130,48 +182,6 @@ export const MyClass = styled.div`
   margin-bottom: 4px;
 `;
 
-// news components
-export const NewsCard = styled.div`
-  display: flex;
-  margin-bottom: 5px;
-  border-radius: 12px;
-  width: 38vw;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #e0e0e0;
-  cursor: pointer;
-
-  @media ${device.tablet} {
-    width: 90vw;
-  }
-`;
-export const NewsDetails = styled.div`
-  display: flex;
-  position: absolute;
-  background-color: #0000007f;
-  width: inherit;
-  height: 220px;
-  z-index: 1;
-  border-radius: 12px;
-  flex-direction: column;
-  color: white;
-
-  .reporter {
-    margin: 10px;
-    font-weight: bold;
-  }
-
-  .title {
-    font-weight: bold;
-    margin: 10px auto auto 10px;
-    font-size: 21px;
-  }
-
-  .timestamp {
-    margin: 10px 10px 10px auto;
-  }
-`;
-
 // classmates components
 export const MateCard = styled.div`
   display: flex;
@@ -234,7 +244,7 @@ export const ExamP = styled.p`
   text-align: justify;
 
   @media ${device.tablet} {
-    width: 90vw;
+    width: 85vw;
   }
 `;
 
@@ -261,6 +271,47 @@ export const PaymentContainer = styled.section`
 `;
 
 // news styles
+// news components
+export const NewsCard = styled.div`
+  display: flex;
+  margin-bottom: 5px;
+  border-radius: 12px;
+  width: 38vw;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+
+  @media ${device.tablet} {
+    width: 90vw;
+  }
+`;
+export const NewsDetails = styled.div`
+  display: flex;
+  position: absolute;
+  background-color: #0000007f;
+  width: inherit;
+  height: 220px;
+  z-index: 1;
+  border-radius: 12px;
+  flex-direction: column;
+  color: white;
+
+  .reporter {
+    margin: 10px;
+    font-weight: bold;
+  }
+
+  .title {
+    font-weight: bold;
+    margin: 10px auto auto 10px;
+    font-size: 21px;
+  }
+
+  .timestamp {
+    margin: 10px 10px 10px auto;
+  }
+`;
 export const NewsHeader = styled.section`
   display: flex;
   flex-direction: column;
@@ -299,7 +350,6 @@ export const Newsmeta = styled.div`
     margin-top: 6px;
   }
 `;
-
 export const NewsForm = styled.section`
   display: flex;
   flex-direction: column;
@@ -342,6 +392,12 @@ export const NewsForm = styled.section`
 `;
 
 // book styles
+export const BooksContainer = styled.section`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
 export const BookCard = styled.div`
   background-color: white;
   border-radius: 12px;
@@ -350,4 +406,17 @@ export const BookCard = styled.div`
   display: flex;
   width: 300px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+`;
+export const BookImage = styled.img`
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  margin-top: auto;
+  margin-bottom: auto;
+`;
+export const BookMeta = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1px;
+  margin-left: 4px;
 `;

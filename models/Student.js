@@ -11,6 +11,7 @@ const StudentSchema = new Schema({
     required: true,
     min: 5,
   },
+  image: String,
   othername: {
     type: String,
     min: 5,
@@ -52,16 +53,6 @@ const StudentSchema = new Schema({
     type: String,
     min: 10,
   },
-  results: [
-    {
-      courseTitle: String,
-      code: String,
-      creditHours: String,
-      score: String,
-      year: String,
-      semester: String,
-    },
-  ],
 });
 
 module.exports = model("Student", StudentSchema);

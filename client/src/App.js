@@ -53,7 +53,7 @@ class App extends Component {
 
             <Route path="/library" component={Library} />
 
-            <PrivateRoute path="/assessment" component={Assessment} />
+            <Route path="/assessment" component={Assessment} />
 
             <PrivateRoute path="/classmates" component={ClassMates} />
 

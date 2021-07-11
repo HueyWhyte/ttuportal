@@ -8,12 +8,14 @@ import {
   TextFieldCon,
   Button,
 } from "../components/components";
+import ErrorBox from "../components/ErrorBox";
 import { login } from "../redux/actions/auth";
 
 class Login extends Component {
   state = {
     indexNumber: "",
     password: "",
+    message: "",
   };
 
   handleTextChange = (e) => {
@@ -33,6 +35,7 @@ class Login extends Component {
 
   render() {
     let { isAuthenticated } = this.props.auth;
+    let { message, code } = this.props.message;
 
     if (isAuthenticated) {
       return <Redirect to="/" />;
@@ -42,7 +45,7 @@ class Login extends Component {
       <Container style={{ alignItems: "center" }}>
         <img
           src="https://i.ibb.co/6vkfQT0/banner.png"
-          alt="sad"
+          alt="logo"
           style={{ width: 350 }}
         />
 
@@ -50,6 +53,8 @@ class Login extends Component {
           Alumni? Login with your index number. Exclude the slashes in your
           index number. Eg. PD/MCS/19/022 becomes PDMCS19022
         </ExamP>
+
+        {message !== "" ? <ErrorBox code={code} message={message} /> : null}
 
         <TextFieldCon>
           <label htmlFor="email">Email</label>
@@ -101,6 +106,7 @@ class Login extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    message: state.message,
   };
 };
 

@@ -20,7 +20,7 @@ export class ClassMates extends Component {
               <ClassMateImg
                 loading="lazy"
                 style={{ width: 65, height: 65, border: "1px solid #e1e1e1" }}
-                src="https://cdn.pixabay.com/photo/2016/03/09/15/10/man-1246508_960_720.jpg"
+                src={mate.image}
                 alt=""
               />
               <div style={{ marginLeft: 8 }}>
@@ -31,10 +31,6 @@ export class ClassMates extends Component {
                 <p>{mate.phone}</p>
                 <p>{mate.email}</p>
               </div>
-
-              {/* <div style={{ marginLeft: "auto", alignContent: "flex-end" }}>
-           
-              </div> */}
             </MateCard>
           ))}
         </section>

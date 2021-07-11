@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import styled from "styled-components";
 
 import { Container, Table } from "../components/components";
 import { getResults } from "../redux/actions/result";
+
 const gradepoints = [
   {
     grade: "A+",

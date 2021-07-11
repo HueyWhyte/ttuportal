@@ -12,6 +12,7 @@ import {
 } from "../components/components";
 import { updateStudent } from "../redux/actions/auth";
 import { getPayments } from "../redux/actions/payment";
+import ErrorBox from "../components/ErrorBox";
 
 class Profile extends Component {
   state = {
@@ -26,6 +27,7 @@ class Profile extends Component {
     dob: this.props.student.dob,
     email: this.props.student.email,
     phone: this.props.student.phone,
+    image: this.props.student.image,
   };
 
   componentDidMount() {
@@ -80,16 +82,16 @@ class Profile extends Component {
       religion,
       home_address,
       dob,
+      image,
     } = this.state;
     let payments = this.props.payments;
+    let { message, code } = this.props.message;
 
     return (
       <Container>
-        <ProfileImage
-          style={{ margin: "10px auto" }}
-          src="https://cdn.pixabay.com/photo/2016/03/09/15/10/man-1246508_960_720.jpg"
-          alt="profile_image"
-        />
+        {message !== "" ? <ErrorBox code={code} message={message} /> : null}
+
+        <ProfileImage style={{ margin: "10px auto" }} src={image} alt="" />
 
         <FieldsContainer>
           <TextFieldCon>
@@ -275,6 +277,7 @@ const mapStateToProps = (state) => {
   return {
     student: state.auth.student,
     payments: state.payment.payments,
+    message: state.message,
   };
 };
 

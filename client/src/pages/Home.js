@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoIosBook } from "react-icons/io";
 
 import {
@@ -24,11 +24,7 @@ class Home extends Component {
   componentDidMount() {}
 
   render() {
-    let { isAuthenticated, student } = this.props.auth;
-
-    if (!isAuthenticated) {
-      return <Redirect to="/login" />;
-    }
+    let { student } = this.props.auth;
 
     return (
       <Container>

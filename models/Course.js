@@ -21,6 +21,10 @@ const CourseSchema = new Schema({
     ref: "Lecturer",
     required: true,
   },
+  assessed: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = model("Course", CourseSchema);

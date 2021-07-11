@@ -23,10 +23,7 @@ class StudentInfo extends Component {
     return (
       <StudentInfoContainer>
         <section style={{ display: "flex", alignItems: "center" }}>
-          <ProfileImage
-            src="https://cdn.pixabay.com/photo/2016/03/09/15/10/man-1246508_960_720.jpg"
-            alt=""
-          />
+          <ProfileImage src={student.image} alt="" />
 
           <div
             style={{

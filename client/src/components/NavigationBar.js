@@ -2,62 +2,13 @@ import React, { Component } from "react";
 import { IoIosMenu } from "react-icons/io";
 import { connect } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import styled from "styled-components";
 
-import { device } from "../assets/screens";
 import { logout } from "../redux/actions/auth";
-
-const NavContainer = styled.nav`
-  background-color: white;
-  height: 45px;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0px 0px 10px 0px #bbb6b6;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 200;
-
-  > a {
-    text-decoration: none;
-
-    @media ${device.tablet} {
-      display: none;
-    }
-  }
-
-  > .nav_btn {
-  }
-
-  > .nav_btn_active {
-    background-color: #1b337f;
-    color: white;
-    padding: 8px;
-    border-radius: 8px 8px 0 0;
-  }
-`;
-
-const SideNavBtn = styled.p`
-  margin-right: 5px;
-  display: none;
-
-  @media ${device.tablet} {
-    display: flex;
-  }
-`;
-
-const ProfileImage = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-
-  @media ${device.tablet} {
-    display: none;
-  }
-`;
+import {
+  NavContainer,
+  SideNavBtn,
+  ProfileImageSmall,
+} from ".././components/components";
 
 class NavigationBar extends Component {
   toggleSiveNav = () => {
@@ -66,11 +17,13 @@ class NavigationBar extends Component {
   };
 
   render() {
+    let { student } = this.props.auth;
+
     return (
       <NavContainer>
         <img
           src="https://i.ibb.co/6vkfQT0/banner.png"
-          alt="sad"
+          alt=""
           style={{ marginRight: 10, marginLeft: 8, width: 100 }}
         />
 
@@ -92,8 +45,7 @@ class NavigationBar extends Component {
           Results
         </NavLink>
 
-        {/* <NavLink to="/transcript">Official Transcript</NavLink> */}
-
+        {/* 
         <Link
           to="#"
           className="nav_btn"
@@ -101,25 +53,16 @@ class NavigationBar extends Component {
           // activeClassName="nav_btn_active"
         >
           Attachment form
-        </Link>
+        </Link> */}
 
-        <Link
-          to="#"
+        <NavLink
+          exact={true}
+          to="/assessment"
           className="nav_btn"
-          // exact={true}
-          // activeClassName="nav_btn_active"
-        >
-          Assumption of duty
-        </Link>
-
-        <Link
-          to="#"
-          className="nav_btn"
-          // exact={true}
-          // activeClassName="nav_btn_active"
+          activeClassName="nav_btn_active"
         >
           Assess Lecturer
-        </Link>
+        </NavLink>
 
         <NavLink
           exact={true}
@@ -127,24 +70,23 @@ class NavigationBar extends Component {
           className="nav_btn"
           activeClassName="nav_btn_active"
         >
-          <ProfileImage>
+          <ProfileImageSmall>
             <img
-              src="https://cdn.pixabay.com/photo/2016/03/09/15/10/man-1246508_960_720.jpg"
-              alt="sad"
+              src={student?.image}
+              alt=""
               style={{
                 marginRight: 5,
-                height: 33,
-                width: 33,
+                height: 32,
+                width: 32,
                 borderRadius: 30,
               }}
             />
-            <p>{this.props.auth.student.indexNumber}</p>
-          </ProfileImage>
+            <p>{student?.indexNumber}</p>
+          </ProfileImageSmall>
         </NavLink>
 
         <Link
           onClick={() => this.props.logout()}
-          // onClick={this.toggleSiveNav}
           to="#"
           style={{
             backgroundColor: "red",
