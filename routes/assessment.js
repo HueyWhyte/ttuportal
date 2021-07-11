@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 // make new assessment
 router.post("/new", async (req, res) => {
   let { course } = this.props.auth;
-  let { course, one, two, three, four, five, six } = req.body;
+  let { one, two, three, four, five, six } = req.body;
 
   const newAssessment = new Assessment({
     course,
