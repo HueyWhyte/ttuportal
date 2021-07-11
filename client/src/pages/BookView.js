@@ -20,11 +20,7 @@ function BookView() {
       {/* <section> </section> */}
 
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-        <Viewer
-          fileUrl="https://drive.google.com/file/d/1__0yws8raTXa_leioKw-7Ok5yWKt2w-J/view?usp=sharing"
-          plugins={[defaultLayoutPluginInstance]}
-        />
-        ;
+        <Viewer fileUrl={pdffile} plugins={[defaultLayoutPluginInstance]} />;
       </Worker>
     </Container>
   );
