@@ -4,7 +4,7 @@ import tokenConfig from "./tokenConfig";
 
 export const accessLecturer = (body) => (dispatch, getState) => {
   axios
-    .post("/assessment/new", body, tokenConfig(getState))
+    .post("/assessmentz/new", body, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: "NEW_ASSESSMENT",

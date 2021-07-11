@@ -36,12 +36,12 @@ const AssessmentTable = styled.table`
 class Assessment extends Component {
   state = {
     course: "",
-    one: 3,
-    two: 3,
-    three: 3,
-    four: 3,
-    five: 3,
-    six: 3,
+    one: 0,
+    two: 0,
+    three: 0,
+    four: 0,
+    five: 0,
+    six: 0,
   };
 
   handleRangeValue = (e) => {
@@ -56,6 +56,16 @@ class Assessment extends Component {
     let data = { course, one, two, three, four, five, six };
     console.log(data);
     this.props.accessLecturer(data);
+
+    this.setState({
+      course: "",
+      one: 0,
+      two: 0,
+      three: 0,
+      four: 0,
+      five: 0,
+      six: 0,
+    });
   };
 
   render() {

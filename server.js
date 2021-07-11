@@ -16,7 +16,7 @@ app.use("/program", require("./routes/program"));
 app.use("/payment", require("./routes/payment"));
 app.use("/students", require("./routes/student"));
 app.use("/lecturer", require("./routes/lecturer"));
-app.use("/assessment", require("./routes/assessment"));
+app.use("/assessmentz", require("./routes/assessment"));
 
 //  process.env.MONGODB_URL,
 // "mongodb://127.0.0.1:27017/portal" ||
