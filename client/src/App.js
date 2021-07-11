@@ -40,20 +40,18 @@ class App extends Component {
         {isAuthenticated ? <SideNav /> : null}
 
         <Container>
-          {/* <SideNav /> */}
-
           <Switch>
             <Route path="/news/:id" component={News} />
 
             <Route path="/news" component={AllNews} />
 
-            <Route path="/addnews" component={AddNews} />
+            <PrivateRoute path="/addnews" component={AddNews} />
 
             <Route path="/library/book/:id" component={BookView} />
 
-            <Route path="/library" component={Library} />
+            <PrivateRoute path="/library" component={Library} />
 
-            <Route path="/assessment" component={Assessment} />
+            <PrivateRoute path="/assessment" component={Assessment} />
 
             <PrivateRoute path="/classmates" component={ClassMates} />
 
