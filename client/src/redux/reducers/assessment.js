@@ -8,7 +8,7 @@ const assessmentReducer = (state = initState, action) => {
     case "NEW_ASSESSMENT":
       return {
         ...state,
-        assessment: action.payload,
+        assessments: action.payload,
       };
     case "LOAD_ASSESSMENTS":
       return {

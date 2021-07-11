@@ -62,7 +62,6 @@ class SemResult extends Component {
             Name: {student.firstname} {student.lastname}
           </p>
           <p>{student.program?.title}</p>
-          <p>Date Of Birth: 04/01/2004</p>
         </section>
 
         <section style={{ marginTop: 20 }}>
