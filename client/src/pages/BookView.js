@@ -15,11 +15,13 @@ function BookView() {
 
   return (
     <Container>
-      <h1 style={{ textAlign: "center" }}>Book Title</h1>
+      {/* <h1 style={{ textAlign: "center" }}>Book Title</h1> */}
 
-      <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
-        <Viewer fileUrl={pdffile} plugins={[defaultLayoutPluginInstance]} />;
-      </Worker>
+      <section style={{ height: "86vh" }}>
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+          <Viewer fileUrl={pdffile} plugins={[defaultLayoutPluginInstance]} />
+        </Worker>
+      </section>
     </Container>
   );
 }
