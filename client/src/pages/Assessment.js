@@ -36,12 +36,12 @@ const AssessmentTable = styled.table`
 class Assessment extends Component {
   state = {
     course: "",
-    one: 0,
-    two: 0,
-    three: 0,
-    four: 0,
-    five: 0,
-    six: 0,
+    one: 1,
+    two: 1,
+    three: 1,
+    four: 1,
+    five: 1,
+    six: 1,
   };
 
   handleRangeValue = (e) => {
@@ -59,12 +59,12 @@ class Assessment extends Component {
 
     this.setState({
       course: "",
-      one: 0,
-      two: 0,
-      three: 0,
-      four: 0,
-      five: 0,
-      six: 0,
+      one: 1,
+      two: 1,
+      three: 1,
+      four: 1,
+      five: 1,
+      six: 1,
     });
   };
 
@@ -125,7 +125,7 @@ class Assessment extends Component {
                   name="one"
                   id="one"
                   max={7}
-                  min={0}
+                  min={1}
                   value={one}
                   onChange={(e) => this.handleRangeValue(e)}
                 />
@@ -154,7 +154,7 @@ class Assessment extends Component {
                   name="two"
                   id="two"
                   max={7}
-                  min={0}
+                  min={1}
                   value={two}
                   onChange={(e) => this.handleRangeValue(e)}
                 />
@@ -190,7 +190,7 @@ class Assessment extends Component {
                   name="three"
                   id="three"
                   max={7}
-                  min={0}
+                  min={1}
                   value={three}
                   onChange={(e) => this.handleRangeValue(e)}
                 />
@@ -230,7 +230,7 @@ class Assessment extends Component {
                   name="four"
                   id="four"
                   max={7}
-                  min={0}
+                  min={1}
                   value={four}
                   onChange={(e) => this.handleRangeValue(e)}
                 />
@@ -265,7 +265,7 @@ class Assessment extends Component {
                   name="five"
                   id="five"
                   max={7}
-                  min={0}
+                  min={1}
                   value={five}
                   onChange={(e) => this.handleRangeValue(e)}
                 />
@@ -294,7 +294,7 @@ class Assessment extends Component {
                   name="six"
                   id="six"
                   max={7}
-                  min={0}
+                  min={1}
                   value={six}
                   onChange={(e) => this.handleRangeValue(e)}
                 />
