@@ -7,20 +7,16 @@ import { accessLecturer, getMyAssessments } from "../redux/actions/assessment";
 import { Container, Button } from ".././components/components";
 
 const AssessmentTable = styled.table`
-  width: 98%;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
 
   > table,
-  th,
+  tr,
   td {
     border: 1px solid black;
     border-collapse: collapse;
-    padding: 5px;
-  }
-
-  > td {
-    display: flex;
+    border-spacing: 0;
   }
 
   > input {
@@ -110,13 +106,6 @@ class Assessment extends Component {
         </select>
 
         <AssessmentTable>
-          <thead>
-            <tr>
-              <th>Statements </th>
-              <th>Scores </th>
-            </tr>
-          </thead>
-
           <tbody>
             <tr>
               <td>

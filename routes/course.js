@@ -62,4 +62,18 @@ router.put("/update", async (req, res) => {
   res.send(course);
 });
 
+// register courses
+router.post("/register", async (req, res) => {
+  let { title, code, id, lecturer } = req.body;
+
+  const course = await Course.findById(id);
+
+  if (title != "") course.title = title;
+  if (code != "") course.code = code;
+  if (lecturer != "") course.lecturer = lecturer;
+
+  await course.save();
+  res.send(course);
+});
+
 module.exports = router;
