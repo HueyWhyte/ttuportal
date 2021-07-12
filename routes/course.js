@@ -13,13 +13,15 @@ router.get("/", (req, res) => {
 
 // add new course
 router.post("/new", (req, res) => {
-  let { title, code, creditHours, lecturer } = req.body;
+  let { title, code, creditHours, lecturer, day, duration } = req.body;
 
   const newCourse = new Course({
     title,
     code,
     creditHours,
     lecturer,
+    day,
+    duration,
   });
 
   newCourse
@@ -50,13 +52,15 @@ router.put("/new_to_program", async (req, res) => {
 
 // update a course
 router.put("/update", async (req, res) => {
-  let { title, code, id, lecturer } = req.body;
+  let { title, code, id, lecturer, day, duration } = req.body;
 
   const course = await Course.findById(id);
 
-  if (title != "") course.title = title;
+  if (day != "") course.day = day;
   if (code != "") course.code = code;
+  if (title != "") course.title = title;
   if (lecturer != "") course.lecturer = lecturer;
+  if (duration != "") course.duration = duration;
 
   await course.save();
   res.send(course);
@@ -67,10 +71,6 @@ router.post("/register", async (req, res) => {
   let { title, code, id, lecturer } = req.body;
 
   const course = await Course.findById(id);
-
-  if (title != "") course.title = title;
-  if (code != "") course.code = code;
-  if (lecturer != "") course.lecturer = lecturer;
 
   await course.save();
   res.send(course);

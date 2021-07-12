@@ -89,3 +89,28 @@ export const getClassMates = () => (dispatch, getState) => {
       });
     });
 };
+
+export const registerCourses = () => (dispatch, getState) => {
+  axios
+    .post(`/course/register`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: "REGISTER",
+        payload: res.data,
+      });
+
+      dispatch({
+        type: "SUCCESS",
+        payload: {
+          status: 200,
+          data: { message: "Courses Registered Successfully" },
+        },
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: "LOAD_ERROR",
+        payload: err.response,
+      });
+    });
+};

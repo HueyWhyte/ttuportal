@@ -23,7 +23,9 @@ const assessmentReducer = (state = initState, action) => {
     case "DELETE_ASSESSMENT":
       return {
         ...state,
-        assessment: action.payload,
+        assessments: state.assessments.filter(
+          (assessment) => assessment._id !== action.payload
+        ),
       };
     default:
       return state;

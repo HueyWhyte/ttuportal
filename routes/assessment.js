@@ -2,7 +2,6 @@ const { Router } = require("express");
 
 const router = Router();
 const Assessment = require("../models/Assessment");
-const Course = require("../models/Course");
 const auth = require("../utils/auth");
 
 // get all assessments
@@ -53,14 +52,14 @@ router.post("/new", auth, async (req, res) => {
     .catch((err) => res.send(err));
 });
 
+// delete assessment
 router.delete("/:id/delete", auth, async (req, res) => {
   const isExist = await Assessment.findById(req.params.id);
-  console.log(isExist);
   if (!isExist) return res.status(401).send("Assessment does not exist");
 
   if (isExist.student == req.student.id) {
     Assessment.deleteOne({ _id: req.params.id })
-      .then((news) => {
+      .then(() => {
         res.send("Assessment Deleted!");
       })
       .catch((err) => res.status(401).send(err));

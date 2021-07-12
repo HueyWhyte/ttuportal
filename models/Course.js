@@ -21,10 +21,8 @@ const CourseSchema = new Schema({
     ref: "Lecturer",
     required: true,
   },
-  assessed: {
-    type: Boolean,
-    default: false,
-  },
+  day: String,
+  duration: String,
 });
 
 module.exports = model("Course", CourseSchema);

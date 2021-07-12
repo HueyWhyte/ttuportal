@@ -56,6 +56,7 @@ class Assessment extends Component {
   onAssess = () => {
     let { course, one, two, three, four, five, six } = this.state;
     let data = { course, one, two, three, four, five, six };
+
     if (course === "") {
       this.setState({ crsErr: true });
     } else {
@@ -71,10 +72,6 @@ class Assessment extends Component {
         six: 1,
       });
     }
-  };
-
-  onDelete = (id) => {
-    this.props.deleteAssessment(id);
   };
 
   render() {
@@ -312,24 +309,35 @@ class Assessment extends Component {
           Submit
         </Button>
 
-        <section style={{ marginTop: 40 }}>
+        <section style={{ marginTop: 40, marginBottom: 20 }}>
           {assessments.map((assessment) => (
-            <div key={assessment._id} style={{ margin: 3, padding: 4 }}>
-              <p>
+            <div
+              key={assessment._id}
+              style={{
+                margin: 3,
+                padding: 4,
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+              }}
+            >
+              <p style={{ flex: 2 }}>
                 {assessment?.course.code} - {assessment?.course.title} -{" "}
                 {assessment?.course?.lecturer.lastname}{" "}
                 {assessment?.course?.lecturer.firstname}
               </p>
 
+              <p style={{ display: "flex", flex: 1 }}>
+                {assessment?.one}, {assessment?.two}, {assessment?.three},{" "}
+                {assessment?.four}, {assessment?.five}, {assessment?.six}
+              </p>
+
               <p
-                style={{ color: "red", fontWeight: "bold" }}
-                onClick={() => this.onDelete(assessment._id)}
+                style={{ color: "red", fontWeight: "bold", cursor: "pointer" }}
+                onClick={() => this.props.deleteAssessment(assessment._id)}
               >
                 Delete
               </p>
-              {/* <p>{assessment?.one}</p>
-              <p>{assessment?.two}</p>
-              <p>{assessment?.three}</p> */}
             </div>
           ))}
         </section>

@@ -14,8 +14,7 @@ import {
 } from "../components/components";
 
 import StudentInfo from "../components/StudentInfo";
-import { classes } from "../assets/data";
-import { loadStudent } from "../redux/actions/auth";
+import { loadStudent, registerCourses } from "../redux/actions/auth";
 
 const date = new Date();
 let day = date.getDay();
@@ -63,21 +62,21 @@ class Home extends Component {
         <section
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             flexWrap: "wrap",
           }}
         >
-          <MinInfo>
+          {/* <MinInfo>
             <p style={{ margin: "6px 0 15px 0", fontWeight: "bold" }}>TEST</p>
-          </MinInfo>
+          </MinInfo> */}
 
           <MinInfo>
             <p style={{ margin: "6px 0 15px 0", fontWeight: "bold" }}>
-              NEXT CLASS
+              TODAY'S CLASS
             </p>
             <div>
-              {classes
-                .filter((item) => item.day === day)
+              {student.program?.courses
+                .filter((item) => item.day == day)
                 .map((myclass) => (
                   <MyClass key={myclass.code}>
                     <IoIosBook
@@ -94,7 +93,7 @@ class Home extends Component {
                         fontSize: 13,
                       }}
                     >
-                      11:00 - 13:00
+                      {myclass.duration}
                     </p>
                   </MyClass>
                 ))}
@@ -111,6 +110,7 @@ class Home extends Component {
             Courses for 2020/2021 Academic year 1 semester
           </p>
           <Button
+            // onClick={() => this.props.registerCourses()}
             primary
             style={{
               marginLeft: "auto",
@@ -176,4 +176,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { loadStudent })(Home);
+export default connect(mapStateToProps, { loadStudent, registerCourses })(Home);

@@ -35,6 +35,11 @@ const authReducer = (state = initialState, action) => {
         student: action.payload.student,
         token: action.payload.token,
       };
+    case "REGISTER":
+      return {
+        ...state,
+        // student: action.payload,
+      };
     case "UPDATE":
       return {
         ...state,

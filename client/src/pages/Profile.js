@@ -249,7 +249,7 @@ class Profile extends Component {
               </tr>
             </thead>
             {payments.map((pay) => (
-              <tbody key={pay.id}>
+              <tbody key={pay._id}>
                 <tr>
                   <td>{pay.year}</td>
                   <td>{pay.timestamp}</td>

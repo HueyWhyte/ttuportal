@@ -50,7 +50,15 @@ export const deleteAssessment = (id) => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: "DELETE_ASSESSMENT",
-        payload: res.data,
+        payload: id,
+      });
+
+      dispatch({
+        type: "SUCCESS",
+        payload: {
+          status: 200,
+          data: { message: "Assessment Deleted" },
+        },
       });
     })
     .catch((err) => {
