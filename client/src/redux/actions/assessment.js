@@ -44,7 +44,7 @@ export const getMyAssessments = () => (dispatch, getState) => {
     });
 };
 
-export const deleteAssessment = () => (dispatch, getState) => {
+export const deleteAssessment = (id) => (dispatch, getState) => {
   axios
     .get(`/assessmentz/${id}/delete`, tokenConfig(getState))
     .then((res) => {
