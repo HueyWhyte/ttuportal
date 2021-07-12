@@ -51,12 +51,22 @@ router.post("/new", auth, async (req, res) => {
     .save()
     .then((course) => res.send(course))
     .catch((err) => res.send(err));
+});
 
-  // update course assessment status to true
-  //   const dcourse = await Course.findById(course);
-  //   dcourse.assessed = true;
-  //   await dcourse.save();
-  //   res.send(dcourse);
+router.delete("/:id/delete", auth, async (req, res) => {
+  const isExist = await Assessment.findById(req.params.id);
+  console.log(isExist);
+  if (!isExist) return res.status(401).send("Assessment does not exist");
+
+  if (isExist.student == req.student.id) {
+    Assessment.deleteOne({ _id: req.params.id })
+      .then((news) => {
+        res.send("Assessment Deleted!");
+      })
+      .catch((err) => res.status(401).send(err));
+  } else {
+    return res.status(401).send("Access Denied, You cant perform action!");
+  }
 });
 
 module.exports = router;

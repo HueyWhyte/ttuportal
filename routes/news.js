@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   News.findById(req.params.id)
     .populate("reporter")
+    .select("-email")
     .then((news) => res.send(news))
     .catch((err) => res.status(401).send({ message: "News does not exist!" }));
 });
@@ -37,8 +38,8 @@ router.post("/new", auth, (req, res) => {
     .catch((err) => res.send(err));
 });
 
-router.delete("/:id/delete", auth, (req, res) => {
-  let isExist = News.findById(req.params.id);
+router.delete("/:id/delete", auth, async (req, res) => {
+  const isExist = await News.findById(req.params.id);
 
   if (!isExist) return res.status(401).send("News does not exist");
 

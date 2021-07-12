@@ -43,3 +43,20 @@ export const getMyAssessments = () => (dispatch, getState) => {
       });
     });
 };
+
+export const deleteAssessment = () => (dispatch, getState) => {
+  axios
+    .get(`/assessmentz/${id}/delete`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: "DELETE_ASSESSMENT",
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: "ERROR",
+        payload: err.response,
+      });
+    });
+};

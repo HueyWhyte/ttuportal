@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { loadStudent } from "../redux/actions/auth";
-import { accessLecturer, getMyAssessments } from "../redux/actions/assessment";
+import {
+  accessLecturer,
+  getMyAssessments,
+  deleteAssessment,
+} from "../redux/actions/assessment";
 import { Container, Button } from ".././components/components";
 
 const AssessmentTable = styled.table`
@@ -67,6 +71,10 @@ class Assessment extends Component {
         six: 1,
       });
     }
+  };
+
+  onDelete = (id) => {
+    this.props.deleteAssessment(id);
   };
 
   render() {
@@ -306,11 +314,18 @@ class Assessment extends Component {
 
         <section style={{ marginTop: 40 }}>
           {assessments.map((assessment) => (
-            <div style={{ margin: 3, padding: 4 }}>
+            <div key={assessment._id} style={{ margin: 3, padding: 4 }}>
               <p>
                 {assessment?.course.code} - {assessment?.course.title} -{" "}
                 {assessment?.course?.lecturer.lastname}{" "}
                 {assessment?.course?.lecturer.firstname}
+              </p>
+
+              <p
+                style={{ color: "red", fontWeight: "bold" }}
+                onClick={() => this.onDelete(assessment._id)}
+              >
+                Delete
               </p>
               {/* <p>{assessment?.one}</p>
               <p>{assessment?.two}</p>
@@ -334,4 +349,5 @@ export default connect(mapStateToProps, {
   loadStudent,
   accessLecturer,
   getMyAssessments,
+  deleteAssessment,
 })(Assessment);

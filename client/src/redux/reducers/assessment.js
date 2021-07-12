@@ -20,6 +20,11 @@ const assessmentReducer = (state = initState, action) => {
         ...state,
         assessment: action.payload,
       };
+    case "DELETE_ASSESSMENT":
+      return {
+        ...state,
+        assessment: action.payload,
+      };
     default:
       return state;
   }
