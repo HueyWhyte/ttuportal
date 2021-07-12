@@ -55,7 +55,7 @@ export const ProfileImageSmall = styled.div`
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
   padding-top: 30px;
