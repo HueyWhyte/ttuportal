@@ -40,14 +40,16 @@ router.post("/new", auth, (req, res) => {
 router.delete("/:id/delete", auth, (req, res) => {
   let isExist = News.findById(req.params.id);
 
-  if (!isExist) return res.status(321).send("News does not exist");
+  if (!isExist) return res.status(401).send("News does not exist");
 
   if (isExist.reporter == req.student.id) {
     News.deleteOne({ _id: req.params.id })
       .then((news) => {
-        res.send(news);
+        res.send("News Deleted!");
       })
       .catch((err) => res.status(401).send(err));
+  } else {
+    return res.status(401).send("Access Denied, You cant perform action!");
   }
 });
 
