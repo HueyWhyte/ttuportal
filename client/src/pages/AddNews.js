@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { Container, NewsForm } from ".././components/components";
+import { Container, NewsForm, Button } from ".././components/components";
 import { newNews } from ".././redux/actions/news";
 
 class AddNews extends Component {
@@ -66,9 +66,9 @@ class AddNews extends Component {
             rows="15"
           ></textarea>
 
-          <p className="button" onClick={() => this.onNewsSubmit()}>
+          <Button primary onClick={() => this.onNewsSubmit()}>
             POST
-          </p>
+          </Button>
         </NewsForm>
       </Container>
     );

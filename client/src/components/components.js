@@ -67,7 +67,7 @@ export const Container = styled.section`
 
 export const Button = styled.p`
   cursor: pointer;
-  background-color: ${(props) => (props.primary ? "blue" : "red")};
+  background-color: ${(props) => (props.primary ? "#1b337f" : "red")};
   color: white;
   border-radius: 12px;
   margin: 10px auto;
@@ -376,19 +376,6 @@ export const NewsForm = styled.section`
     border-radius: 12px;
     border: 1px solid grey;
     padding: 8px;
-  }
-
-  > p {
-    background-color: grey;
-    padding: 4px 20px;
-    border-radius: 12px;
-    text-align: center;
-    line-height: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: bold;
-    color: white;
-    background-color: #1b337f;
   }
 `;
 

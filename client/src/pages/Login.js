@@ -63,50 +63,55 @@ class Login extends Component {
           index number. Eg. PD/MCS/19/022 becomes PDMCS19022
         </ExamP>
 
-        <TextFieldCon>
-          <label htmlFor="email">Email</label>
-          <input
-            style={{ borderColor: this.state.inumErr ? "red" : "none" }}
-            onChange={this.handleTextChange}
-            value={this.state.indexNumber}
-            type="text"
-            name="indexNumber"
-            id="email"
-            placeholder="071872727"
-          />
-        </TextFieldCon>
+        <form action="" style={{ display: "flex", flexDirection: "column" }}>
+          <TextFieldCon>
+            <label htmlFor="email">Email</label>
+            <input
+              style={{ borderColor: this.state.inumErr ? "red" : "none" }}
+              onChange={this.handleTextChange}
+              value={this.state.indexNumber}
+              type="text"
+              name="indexNumber"
+              id="email"
+              placeholder="071872727"
+            />
+          </TextFieldCon>
 
-        <TextFieldCon>
-          <label htmlFor="password">Password</label>
-          <input
-            style={{ borderColor: this.state.pswdErr ? "red" : "none" }}
-            onChange={this.handleTextChange}
-            value={this.state.password}
-            type="password"
-            name="password"
-            id="password"
-          />
-        </TextFieldCon>
+          <TextFieldCon>
+            <label htmlFor="password">Password</label>
+            <input
+              style={{ borderColor: this.state.pswdErr ? "red" : "none" }}
+              onChange={this.handleTextChange}
+              value={this.state.password}
+              type="password"
+              name="password"
+              id="password"
+            />
+          </TextFieldCon>
+          <TextFieldCon
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <input
+              style={{ width: 20, height: 20, marginRight: 12 }}
+              type="checkbox"
+              name="more"
+              id="more"
+            />
+            <p>Trust tis computer for 30 days</p>
+          </TextFieldCon>
 
-        <TextFieldCon
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <input
-            style={{ width: 20, height: 20, marginRight: 12 }}
-            type="checkbox"
-            name="more"
-            id="more"
-          />
-          <p>Trust tis computer for 30 days</p>
-        </TextFieldCon>
-
-        <Button primary onClick={this.loginUser}>
-          Login
-        </Button>
+          <Button
+            primary
+            onClick={this.loginUser}
+            style={{ marginLeft: "auto", marginRight: "auto" }}
+          >
+            Login
+          </Button>
+        </form>
       </Container>
     );
   }
