@@ -46,7 +46,7 @@ export const getMyAssessments = () => (dispatch, getState) => {
 
 export const deleteAssessment = (id) => (dispatch, getState) => {
   axios
-    .get(`/assessmentz/${id}/delete`, tokenConfig(getState))
+    .delete(`/assessmentz/${id}/delete`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: "DELETE_ASSESSMENT",
