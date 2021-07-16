@@ -56,6 +56,7 @@ class NavigationBar extends Component {
           to="/"
           className="nav_btn"
           activeClassName="nav_btn_active"
+          style={{ marginLeft: "auto" }}
         >
           Home
         </NavLink>
@@ -65,6 +66,7 @@ class NavigationBar extends Component {
           to="/assessment"
           className="nav_btn"
           activeClassName="nav_btn_active"
+          style={{ marginLeft: 15, marginRight: 9 }}
         >
           Assess Lecturer
         </NavLink>

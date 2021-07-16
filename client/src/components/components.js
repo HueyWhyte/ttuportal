@@ -28,10 +28,11 @@ export const NavContainer = styled.nav`
   }
 
   > .nav_btn_active {
-    background-color: #1b337f;
-    color: white;
-    padding: 8px;
-    border-radius: 8px 8px 0 0;
+    background-color: #003cff70;
+    padding: 4px;
+    border-radius: 8px;
+    color: #000047;
+    font-weight: bold;
   }
 `;
 export const SideNavBtn = styled.p`
