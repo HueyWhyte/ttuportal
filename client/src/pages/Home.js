@@ -76,7 +76,7 @@ class Home extends Component {
             </p>
             <div>
               {student.program?.courses
-                .filter((item) => item.day == day)
+                .filter((item) => item.day === day)
                 .map((myclass) => (
                   <MyClass key={myclass.code}>
                     <IoIosBook

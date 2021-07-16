@@ -322,7 +322,7 @@ class Assessment extends Component {
               }}
             >
               <p style={{ flex: 2 }}>
-                {assessment?.course.code} - {assessment?.course.title} -{" "}
+                {assessment?.course?.code} - {assessment?.course.title} -{" "}
                 {assessment?.course?.lecturer.lastname}{" "}
                 {assessment?.course?.lecturer.firstname}
               </p>

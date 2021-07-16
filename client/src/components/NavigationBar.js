@@ -11,9 +11,33 @@ import {
 } from ".././components/components";
 
 class NavigationBar extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showMenu: false,
+    };
+
+    this.showMenu = this.showMenu.bind(this);
+  }
+
   toggleSiveNav = () => {
     document.getElementById("side_nav").style =
       "display: flex; left: 0; transition: all; transition-duration: 0.5s;";
+  };
+
+  showMenu = (event) => {
+    event.preventDefault();
+    this.setState({ showMenu: !this.state.showMenu });
+    // this.setState({ showMenu: true }, () => {
+    //   document.addEventListener("click", this.closeMenu);
+    // });
+  };
+
+  closeMenu = () => {
+    this.setState({ showMenu: false }, () => {
+      document.removeEventListener("click", this.closeMenu);
+    });
   };
 
   render() {
@@ -38,25 +62,6 @@ class NavigationBar extends Component {
 
         <NavLink
           exact={true}
-          to="/results"
-          className="nav_btn"
-          activeClassName="nav_btn_active"
-        >
-          Results
-        </NavLink>
-
-        {/* 
-        <Link
-          to="#"
-          className="nav_btn"
-          // exact={true}
-          // activeClassName="nav_btn_active"
-        >
-          Attachment form
-        </Link> */}
-
-        <NavLink
-          exact={true}
           to="/assessment"
           className="nav_btn"
           activeClassName="nav_btn_active"
@@ -64,12 +69,7 @@ class NavigationBar extends Component {
           Assess Lecturer
         </NavLink>
 
-        <NavLink
-          exact={true}
-          to="/profile"
-          className="nav_btn"
-          activeClassName="nav_btn_active"
-        >
+        <div onClick={this.showMenu}>
           <ProfileImageSmall>
             <img
               src={student?.image}
@@ -83,24 +83,76 @@ class NavigationBar extends Component {
             />
             <p>{student?.indexNumber}</p>
           </ProfileImageSmall>
-        </NavLink>
+        </div>
 
-        <Link
-          onClick={() => this.props.logout()}
-          to="#"
-          style={{
-            backgroundColor: "red",
-            borderRadius: 12,
-            color: "white",
-            padding: 6,
-            textAlign: "center",
-            textDecoration: "none",
-            fontWeight: "bold",
-            cursor: "pointer",
-          }}
-        >
-          Logout
-        </Link>
+        {this.state.showMenu ? (
+          <div
+            style={{
+              width: 150,
+              height: 120,
+              position: "fixed",
+              top: 50,
+              right: 10,
+              backgroundColor: "white",
+              borderRadius: 12,
+              padding: 6,
+              display: "flex",
+              flexDirection: "column",
+              boxShadow: "0px 0px 10px 0px #bbb6b6",
+            }}
+          >
+            <Link
+              exact={true}
+              to="/addnews"
+              style={{
+                backgroundColor: "blue",
+                color: "white",
+                borderRadius: 12,
+                padding: 6,
+                textAlign: "center",
+                textDecoration: "none",
+                fontWeight: "bold",
+                cursor: "pointer",
+                marginBottom: 5,
+              }}
+            >
+              Add News
+            </Link>
+            <Link
+              exact={true}
+              to="/results"
+              style={{
+                backgroundColor: "blue",
+                color: "white",
+                borderRadius: 12,
+                padding: 6,
+                textAlign: "center",
+                textDecoration: "none",
+                fontWeight: "bold",
+                cursor: "pointer",
+                marginBottom: 5,
+              }}
+            >
+              Results
+            </Link>
+            <p
+              onClick={() => this.props.logout()}
+              to="#"
+              style={{
+                backgroundColor: "red",
+                borderRadius: 12,
+                color: "white",
+                padding: 6,
+                textAlign: "center",
+                textDecoration: "none",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              Logout
+            </p>
+          </div>
+        ) : null}
 
         <SideNavBtn onClick={this.toggleSiveNav}>
           <IoIosMenu size={30} />

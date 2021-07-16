@@ -27,6 +27,7 @@ router.get("/me", auth, (req, res) => {
       populate: { path: "lecturer", model: "Lecturer" },
     })
     .populate("student")
+    .sort("-timestamp")
     .then((assessments) => res.send(assessments))
     .catch((err) => res.status(401).send(err));
 });

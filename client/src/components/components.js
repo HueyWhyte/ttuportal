@@ -90,6 +90,13 @@ export const ProfileImage = styled.img`
     height: 90px;
     width: 90px;
   }
+
+  @media ${device.mobile} {
+    height: 50px;
+    width: 55px;
+    margin-right: 3px;
+    margin-left: 0px;
+  }
 `;
 
 // student components
@@ -111,6 +118,11 @@ export const StudentInfoContainer = styled.div`
   @media ${device.tablet} {
     flex-direction: row;
     width: 96%;
+  }
+
+  @media ${device.mobile} {
+    padding: 4px;
+    width: 98%;
   }
 `;
 export const LargeText = styled.div`

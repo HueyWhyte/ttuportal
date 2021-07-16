@@ -32,7 +32,7 @@ class StudentInfo extends Component {
               justifyContent: "space-evenly",
             }}
           >
-            <p style={{ fontSize: 24, fontWeight: "bold" }}>
+            <p style={{ fontSize: 23, fontWeight: "bold" }}>
               {student.firstname} {student.lastname}
             </p>
             <p style={{ color: "#e1e1e1", marginTop: 5, marginBottom: 5 }}>
