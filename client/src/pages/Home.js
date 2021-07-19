@@ -109,7 +109,7 @@ class Home extends Component {
           >
             Courses for 2020/2021 Academic year 1 semester
           </p>
-          <Button
+          {/* <Button
             // onClick={() => this.props.registerCourses()}
             primary
             style={{
@@ -119,7 +119,7 @@ class Home extends Component {
             }}
           >
             REGISTER
-          </Button>
+          </Button> */}
           <div
             style={{
               overflow: "auto",
