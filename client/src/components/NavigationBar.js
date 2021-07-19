@@ -71,6 +71,16 @@ class NavigationBar extends Component {
           Assess Lecturer
         </NavLink>
 
+        <NavLink
+          exact={true}
+          to="/news"
+          className="nav_btn"
+          activeClassName="nav_btn_active"
+          style={{ marginLeft: 15, marginRight: 9 }}
+        >
+          News
+        </NavLink>
+
         <div onClick={this.showMenu}>
           <ProfileImageSmall>
             <img
@@ -137,6 +147,25 @@ class NavigationBar extends Component {
             >
               Results
             </Link>
+
+            <Link
+              exact={true}
+              to="/profile"
+              style={{
+                backgroundColor: "blue",
+                color: "white",
+                borderRadius: 12,
+                padding: 6,
+                textAlign: "center",
+                textDecoration: "none",
+                fontWeight: "bold",
+                cursor: "pointer",
+                marginBottom: 5,
+              }}
+            >
+              Profile
+            </Link>
+
             <p
               onClick={() => this.props.logout()}
               to="#"

@@ -133,9 +133,9 @@ class Profile extends Component {
               id="title"
             >
               <option value=""></option>
-              <option value="male">Mr.</option>
-              <option value="Female">Ms.</option>
-              <option value="Female">Mrs.</option>
+              <option value="mr.">Mr.</option>
+              <option value="ms.">Ms.</option>
+              <option value="mrs">Mrs.</option>
             </select>
           </TextFieldCon>
 
@@ -196,8 +196,8 @@ class Profile extends Component {
               id="status"
             >
               <option value=""></option>
-              <option value="male">Single</option>
-              <option value="Female">Married</option>
+              <option value="single">Single</option>
+              <option value="married">Married</option>
             </select>
           </TextFieldCon>
 
@@ -212,7 +212,7 @@ class Profile extends Component {
               <option value=""></option>
               <option value="christian">Christian</option>
               <option value="muslim">Muslim</option>
-              <option value="Bud">Buda</option>
+              <option value="Buda">Buda</option>
             </select>
           </TextFieldCon>
 
